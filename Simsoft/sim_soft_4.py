@@ -271,13 +271,13 @@ class RiskPreferenceModule(BaseModule):
 
         self.ax.clear()
         self.ax.plot(xs, u(xs), label="U(w)")
-        self.ax.plot([w1, w2], [U1, U2], color="gray", lw=1, ls="--", label="连线")
+        self.ax.plot([w1, w2], [U1, U2], color="gray", linewidth=1, linestyle="--", label="连线")
 
         pts = [("A", w1, U1), ("D", w2, U2), ("B", Ew, EU), ("C", Ew, U_Ew), ("E", CE, EU)]
         for lbl, x, y in pts:
             self.ax.scatter(x, y)
             self.ax.text(x, y, f" {lbl}")
-            self.ax.vlines(x, min(U1, U2, EU, U_Ew)*0.95, y, color="gray", ls="dotted", lw=0.5)
+            self.ax.vlines(x, min(U1, U2, EU, U_Ew)*0.95, y, color="gray", linestyle="dotted", linewidth=0.5)
 
         self.ax.set_xlabel("财富 w")
         self.ax.set_ylabel("效用 U(w)")
@@ -871,7 +871,7 @@ class LemonMarketSimulator:
             beta: float = 0.3,
             gamma: float = 0.2,
             steps: int = 30,
-            seed: int | None = None,
+            seed: int  = None,
     ) -> None:
         if seed is not None:
             np.random.seed(seed)
